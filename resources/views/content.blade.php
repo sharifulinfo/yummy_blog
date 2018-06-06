@@ -68,7 +68,7 @@
                                             </div>
                                             <!-- Post Date -->
                                             <div class="post-date">
-                                                <a href="#">May 19, 2017</a>
+                                                <a href="#">{{date('M d, Y',strtotime($allBlog[0]->created_at))}}</a>
                                             </div>
                                         </div>
                                         <!-- Post Comment & Share Area -->
@@ -87,11 +87,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#">
+                                    <a href="{{url('/single').'/'.$allBlog[0]->id}}">
                                         <h2 class="post-headline">{{$allBlog[0]->blog_title}}</h2>
                                     </a>
                                     <p>{{str_limit(strip_tags($allBlog[0]->blog_desc),300)}}</p>
-                                    <a href="#" class="read-more">Continue Reading..</a>
+                                    <a href="{{url('/single').'/'.$allBlog[0]->id}}" class="read-more">Continue Reading..</a>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
+                                                    <a href="#">{{date('M d, Y',strtotime($blog->created_at))}}</a>
                                                 </div>
                                             </div>
                                             <!-- Post Comment & Share Area -->
@@ -137,7 +137,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#">
+                                        <a href="{{url('/single').'/'.$blog->id}}">
                                             <h4 class="post-headline">{{$blog->blog_title}}</h4>
                                         </a>
                                     </div>
@@ -171,7 +171,7 @@
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
+                                                    <a href="#">{{date('M d, Y',strtotime($blog->created_at))}}</a>
                                                 </div>
                                             </div>
                                             <!-- Post Comment & Share Area -->
@@ -190,11 +190,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#">
+                                        <a href="{{url('/single').'/'.$blog->id}}">
                                             <h4 class="post-headline">{{$blog->blog_title}}</h4>
                                         </a>
                                         <p>{{str_limit(strip_tags($blog->blog_desc),80)}}</p>
-                                        <a href="#" class="read-more">Continue Reading..</a>
+                                        <a href="{{url('/single').'/'.$blog->id}}" class="read-more">Continue Reading..</a>
                                     </div>
                                 </div>
                             </div> 
