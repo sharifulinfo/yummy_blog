@@ -20,6 +20,12 @@
     <!-- Responsive CSS -->
     <link href="{{url('Frontend')}}/css/responsive/responsive.css" rel="stylesheet">
 
+     <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -261,4 +267,6 @@
     <script src="{{url('Frontend')}}/js/others/plugins.js"></script>
     <!-- Active JS -->
     <script src="{{url('Frontend')}}/js/active.js"></script>
+     
+    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
 </body>

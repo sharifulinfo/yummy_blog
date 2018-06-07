@@ -7,7 +7,7 @@
         <!-- Single Slide -->
         @foreach ($sliders as $slider) 
         <div class="welcome-single-slide">
-            <!-- Post Thumb -->
+            <!-- Post Thumb --> 
             <img src="{{url('')}}/{{$slider->slider_img}}" alt="aaaaaaaaaaaaaaaaaaaaaaaaa" height="495" width="330">
             <!-- Overlay Text -->
             <div class="project_title">

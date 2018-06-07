@@ -13,6 +13,7 @@
 
  
 Route::get('/','FrontController@getIndex');
+Route::get('/single/{id}','FrontController@getSingle');
 
 //Route::get('sliders','FrontController@getSlider');
 

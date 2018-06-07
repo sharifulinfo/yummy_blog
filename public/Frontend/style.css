@@ -1487,3 +1487,8 @@ li {
 	color: #fff;
 	cursor: pointer;
 }
+.post-content p img{
+    width: 100%;
+    /* float: none; */
+    border-radius: 30px;
+}

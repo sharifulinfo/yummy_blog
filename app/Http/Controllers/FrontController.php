@@ -12,6 +12,10 @@ class FrontController extends Controller
 		return view('content');
 	}  
 
+	public function getSingle($id){
+		$data['result'] = \DB::table('blogs')->where('id',$id)->first();
+		return view('single',$data);
+	}
 
 }
 		
