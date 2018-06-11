@@ -14,6 +14,9 @@
  
 Route::get('/','FrontController@getIndex');
 Route::get('/single/{id}','FrontController@getSingle');
+Route::post('/addComment/','FrontController@addComment');
+Route::get('/allComments/{id}','FrontController@parentComments');
+Route::get('/allComment/{id}','FrontController@parentComments');
 
 //Route::get('sliders','FrontController@getSlider');
 

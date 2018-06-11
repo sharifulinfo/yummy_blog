@@ -253,11 +253,11 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
 
     <!-- ****** Footer Menu Area End ****** -->
 
-    <!-- Jquery-2.2.4 js -->
+    <!-- Jquery-2.2.4 js --> 
     <script src="{{url('Frontend')}}/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
     <script src="{{url('Frontend')}}/js/bootstrap/popper.min.js"></script>
@@ -268,5 +268,41 @@
     <!-- Active JS -->
     <script src="{{url('Frontend')}}/js/active.js"></script>
      
-    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script> 
+
+    <script type="text/javascript">
+         $('#show').click(function(){   
+            var comment_blog_id = $('#comment_blog_id').val();
+            var comment_parent_id = $('#comment_parent_id').val();
+            var comment_author_name = $('#comment_author_name').val();
+            var comment_author_email = $('#comment_author_email').val();
+            var comment_author_msg = $('#comment_author_msg').val();
+
+                if(comment_author_name == "" || comment_author_email == "" || comment_author_msg == ""){
+                    $('#error').html("Field mus not empty");
+                }else{
+                   $.ajax({
+                    url:"{{ url('/addComment') }}",
+                    method:"POST",
+                     data:{comment_blog_id:comment_blog_id,comment_parent_id:comment_parent_id,comment_author_name:comment_author_name,comment_author_email:comment_author_email,comment_author_msg:comment_author_msg, _token: '{{csrf_token()}}'},
+                    success:function(data){ 
+                        $('#comment_author_name').val("");
+                        $('#comment_author_email').val("");
+                        $('#comment_author_msg').val("");
+                        $('#success').html("your comment posted successfully");
+                        } 
+                    });
+                }
+           });
+         setInterval(function(){
+            // var blogid = $('#blogids').val();
+            // console.log(blogid);
+            $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+        },1000);
+    </script>>
+
+    
+
+
+
 </body>

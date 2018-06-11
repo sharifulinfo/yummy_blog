@@ -1492,3 +1492,11 @@ li {
     /* float: none; */
     border-radius: 30px;
 }
+
+.buddon{
+    color: #fff;
+    background-color: #fc6c3f;
+    padding: 4px 16px;
+    border: 0px;
+    font-size: 14px;
+}
