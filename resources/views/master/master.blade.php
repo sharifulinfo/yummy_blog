@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body id="ddd">
     <!-- Preloader Start -->
     <div id="preloader">
         <div class="yummy-load"></div>
@@ -294,11 +294,13 @@
                     });
                 }
            });
-         setInterval(function(){
+         $(document).ready(function(){
+         $("#ddd").scroll(function(){ 
+            //console.log('scroll');
             // var blogid = $('#blogids').val();
             // console.log(blogid);
-            $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
-        },1000);
+             $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+        }); });
     </script>>
 
     

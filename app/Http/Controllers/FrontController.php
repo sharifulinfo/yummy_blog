@@ -87,7 +87,11 @@ class FrontController extends Controller
 		                        <h5>'.$row->comment_author_name.'</h5>
 		                        <p>'.$row->comment_author_msg.'</p>
 		                        <a href="#">Like</a>
-		                        <a class="active" href="#">Reply</a>
+		                         
+		                        <button type="button" class="active buddon" data-toggle="collapse" data-target="#demo1">Replay</button>
+		                        <div class="leave-comment-area section_padding_50 collapse clearfix" id="demo1">
+		                        	<p>somek asdfi alsdfu aisdf ads</p>
+		                        </div>
 		                    </div>
 		                </div>';
 	       		$this->result = $this->childComments($blogid, $row->id); 
