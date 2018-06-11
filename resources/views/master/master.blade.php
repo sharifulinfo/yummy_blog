@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
@@ -28,7 +29,7 @@
 
 </head>
 
-<body id="ddd">
+<body>
     <!-- Preloader Start -->
     <div id="preloader">
         <div class="yummy-load"></div>
@@ -293,15 +294,30 @@
                         } 
                     });
                 }
+                     var myInterval = setInterval(function(){
+                        // var blogid = $('#blogids').val();
+                        // console.log(blogid);
+                        $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+                    },1000);
+
+                    $('#allcomments').on("click","#buttonID", function() {
+                    if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+                });
+
            });
-         $(document).ready(function(){
-         $("#ddd").scroll(function(){ 
-            //console.log('scroll');
-            // var blogid = $('#blogids').val();
-            // console.log(blogid);
-             $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
-        }); });
-    </script>>
+         var myInterval = setInterval(function(){
+                // var blogid = $('#blogids').val();
+                // console.log(blogid);
+                $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+            },1000);
+         
+
+         $('#allcomments').on("click","#buttonID", function() {
+            if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+        });
+
+         
+    </script>
 
     
 

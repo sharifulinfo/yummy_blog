@@ -185,7 +185,7 @@
 								</li> 
 							</ol>
 						</div>
-						<!-- Leave A Comment -->
+						<!-- Leave A Comment --> 
 						<div class="leave-comment-area section_padding_50 clearfix">
 							<div class="comment-form">
 								<h4 class="mb-30">Replay Your Comment</h4>

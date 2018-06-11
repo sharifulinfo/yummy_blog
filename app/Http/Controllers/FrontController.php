@@ -88,9 +88,33 @@ class FrontController extends Controller
 		                        <p>'.$row->comment_author_msg.'</p>
 		                        <a href="#">Like</a>
 		                         
-		                        <button type="button" class="active buddon" data-toggle="collapse" data-target="#demo1">Replay</button>
-		                        <div class="leave-comment-area section_padding_50 collapse clearfix" id="demo1">
-		                        	<p>somek asdfi alsdfu aisdf ads</p>
+		                        <button type="button" class="active buddon" data-toggle="collapse" data-target="#demo'.$row->id.'" id="buttonID">Replay</button>
+		                        <div class="leave-comment-area section_padding_50 collapse clearfix" id="demo'.$row->id.'">
+		                        	 
+		                        	 <div class="comment-form">
+										<h4 class="mb-30">Replay Your Comment</h4>
+										<!-- Comment Form -->
+										<form action="" method="">
+											'.csrf_field().'
+											<input type="hidden" name="comment_blog_id" id = "comment_blog_id" value="'.$blogid.'">
+											<input type="hidden" name="comment_parent_id" id="comment_parent_id" value="'.$parentid.'">
+											<div id ="error" class="text-danger"></div>
+											<div id ="success" style="color: green"></div>
+											<div class="form-group">
+											<input type="text" class="form-control" id="comment_author_name" name="comment_author_name" placeholder="Name">
+											</div>
+											<div class="form-group">
+												<input type="text" class="form-control" id="comment_author_email" name="comment_author_email" placeholder="Email"> 
+											</div>
+											<div class="form-group">
+											<textarea class="form-control" name="comment_author_msg" id="comment_author_msg" cols="30" rows="10" placeholder="Message"></textarea>
+											</div>
+										</form>
+											<button type="submit" class="btn contact-btn" id="show">Post Comment</button>
+									</div>
+
+
+
 		                        </div>
 		                    </div>
 		                </div>';
@@ -106,3 +130,17 @@ class FrontController extends Controller
 
 }
 		
+											// 	'.csrf_field().'
+											// <input type="hidden" name="comment_blog_id" id = "comment_blog_id" value="'.$blogid.'">
+											// <input type="hidden" name="comment_parent_id" id="comment_parent_id" value="'.$parentid.'">
+											// <div class="form-group">
+											// 	<input type="text" class="form-control" id="comment_author_name" name="comment_author_name" placeholder="Name" value="'.old("comment_author_name").'">
+											// 	<p class="text-danger">'.$errors->first("comment_author_name").'</p>
+											// </div>
+											// <div class="form-group">
+											// 	<input type="text" class="form-control" id="comment_author_email" name="comment_author_email" placeholder="Email"> 
+											// </div>
+											// <div class="form-group">
+											// 	<textarea class="form-control" name="comment_author_msg" id="comment_author_msg" cols="30" rows="10" placeholder="Message">'.old("comment_author_msg").'</textarea>
+											// 	<p class="text-danger">'.$errors->first("comment_author_msg").'</p>
+											// </div>
