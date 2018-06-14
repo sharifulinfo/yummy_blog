@@ -176,7 +176,7 @@
 															<textarea class="form-control" name="comment_author_msg" id="message" cols="30" rows="10" placeholder="Message">{{old('comment_author_msg')}}</textarea>
 															<p class="text-danger">{{$errors->first('comment_author_msg')}}</p>
 														</div>
-														<button type="submit" class="btn contact-btn">Post Comment</button>
+														<button type="submit" class="btn contact-btn" >Post Comment</button>
 													</form>
 												</div>
 											</div>

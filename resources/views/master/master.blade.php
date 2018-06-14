@@ -272,6 +272,7 @@
     <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script> 
 
     <script type="text/javascript">
+        var myInterval = ''; 
          $('#show').click(function(){   
             var comment_blog_id = $('#comment_blog_id').val();
             var comment_parent_id = $('#comment_parent_id').val();
@@ -290,33 +291,89 @@
                         $('#comment_author_name').val("");
                         $('#comment_author_email').val("");
                         $('#comment_author_msg').val("");
-                        $('#success').html("your comment posted successfully");
+                        var myInterval = setInterval(function(){ 
+                                $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+                            },1000); 
+                            // $('#allcomments').on("click","#buttonID", function() {
+                            //     // var replayId = $('#replayId').val();
+                            //     // console.log(replayId);
+                            //     if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+                            // });
+
+                            // function childID(Obj){
+                            //     var replayId = Obj.id;
+                            //     // var replayId = '"#'+replayId+'"';
+                            //     // console.log(replayId);
+                            //     if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+                            //  }
                         } 
                     });
-                }
-                     var myInterval = setInterval(function(){
-                        // var blogid = $('#blogids').val();
-                        // console.log(blogid);
-                        $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
-                    },1000);
-
-                    $('#allcomments').on("click","#buttonID", function() {
-                    if (typeof myInterval != 'undefined') clearTimeout(myInterval);
-                });
-
+                } 
            });
-         var myInterval = setInterval(function(){
-                // var blogid = $('#blogids').val();
-                // console.log(blogid);
-                $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
-            },1000);
-         
 
-         $('#allcomments').on("click","#buttonID", function() {
-            if (typeof myInterval != 'undefined') clearTimeout(myInterval);
-        });
+         var myInterval = setInterval(function(){ 
+            $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+        },1000);
 
-         
+        //  $('#allcomments').on("click","#buttonID", function() {
+        //     // var replayId = $('#replayId').val();
+        //     // console.log(replayId);
+        //     if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+        // });
+
+        // function childID(Obj){
+        //     var replayId = Obj.id;
+        //     // var replayId = '"#'+replayId+'"';
+        //     // console.log(replayId);
+        //     if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+        //  }
+
+        function childID(Obj){
+  var replayId = Obj.id;
+  // var replayId = '"#'+replayId+'"';
+  // console.log(replayId); 
+  function outer (id) {
+     // id will remain in scope of this function and will be accessable to inner callback
+     return function inner () {
+      console.log('something action...', id);
+     }
+  }
+  
+  $('#allcomments').on("click", outer(replayId));
+}
+
+         // $('#allcomments').on("click", replayId, function(){  
+         // console.log('some'); 
+
+         //    //var comment_blog_id = $('#comment_blog_id1').val();
+         //    // var comment_parent_id = $('#comment_parent_id1').val();
+         //    // var comment_author_name = $('#comment_author_name1').val();
+         //    var comment_author_email = $('#comment_author_email1').val();
+         //    console.log(comment_author_email+'adfs adsf');
+         //    // var comment_author_msg = $('#comment_author_msg1').val();
+
+         //    //     if(comment_author_name == "" || comment_author_email == "" || comment_author_msg == ""){
+         //    //         $('#error').html("Field mus not empty");
+         //    //     }else{
+         //    //        $.ajax({
+         //    //         url:"{{ url('/addComment') }}",
+         //    //         method:"POST",
+         //    //          data:{comment_blog_id:comment_blog_id,comment_parent_id:comment_parent_id,comment_author_name:comment_author_name,comment_author_email:comment_author_email,comment_author_msg:comment_author_msg, _token: '{{csrf_token()}}'},
+         //    //         success:function(data){ 
+         //    //             $('#comment_author_name').val("");
+         //    //             $('#comment_author_email').val("");
+         //    //             $('#comment_author_msg').val("");
+         //    //             var myInterval = setInterval(function(){ 
+         //    //                     $('#allcomments').load("{{url('/allComments'.'/'.$result->id)}}").fadeIn('slow');
+         //    //                 },1000); 
+         //    //                 $('#allcomments').on("click","#buttonID", function() {
+         //    //                     if (typeof myInterval != 'undefined') clearTimeout(myInterval);
+         //    //                 });
+         //    //             } 
+         //    //         });
+         //    //     } 
+         //   });  
+
     </script>
 
     
