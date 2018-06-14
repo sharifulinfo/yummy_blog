@@ -11,7 +11,8 @@ class FrontController extends Controller
 
 	public function getIndex(){ 
 		//$data['allBlog'] = \DB::table('blogs')->orderBy('id','desc')->get()->toArray();
-		return view('content');
+		$data['categories'] = DB::table('categories')->orderBy('id','desc')->take(3)->get();
+		return view('content',$data);
 	}  
 
 	public function getSingle($id){
@@ -123,6 +124,33 @@ class FrontController extends Controller
 		echo $this->result;
 
 	}	
+	public function allPost(){ 
+		$data['allBlog'] = \DB::table('blogs')->orderBy('id','desc')
+                ->join('cms_users', 'blogs.blog_author', '=', 'cms_users.id')
+                ->select('blogs.*', 'cms_users.name') 
+                ->paginate(8);
+		return view('posts',$data);
+	}
+	public function category_search($id){ 
+		$data['cat_name'] = \DB::table('categories')->where('id',$id)->first(); 
+		$data['allBlog'] = \DB::table('blogs')->orderBy('id','desc')
+                ->join('cms_users', 'blogs.blog_author', '=', 'cms_users.id')
+                ->select('blogs.*', 'cms_users.name') 
+                ->where('blog_category',$id)
+                ->paginate(8);
+		return view('categories',$data);
+	}
+	public function item_search(Request $request){ 
+		//echo $request->search;
+		$data['keyword'] = $request->search; 
+		$data['allBlog'] = \DB::table('blogs')->orderBy('id','desc')
+                ->join('cms_users', 'blogs.blog_author', '=', 'cms_users.id')
+                ->select('blogs.*', 'cms_users.name') 
+                ->where('blogs.blog_title', 'like', '%'.$request->search.'%')
+                ->paginate(2);
+            //dd($data);    
+		return view('search',$data);
+	}
 
 }
 		

@@ -7,36 +7,18 @@
     <section class="categories_area clearfix" id="about">
         <div class="container">
             <div class="row">
+                @foreach($categories as $cat)
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
-                        <img src="{{url('Frontend')}}/img/catagory-img/1.jpg" alt="">
+                        <img src="{{url('')}}/{{$cat->category_img}}" alt="">
                         <div class="catagory-title">
-                            <a href="#">
-                                <h5>Food</h5>
+                            <a href="{{url('/category').'/'.$cat->id}}">
+                                <h5>{{$cat->category_name}}</h5>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
-                        <img src="{{url('Frontend')}}/img/catagory-img/2.jpg" alt="">
-                        <div class="catagory-title">
-                            <a href="#">
-                                <h5>Cooking</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
-                        <img src="{{url('Frontend')}}/img/catagory-img/3.jpg" alt="">
-                        <div class="catagory-title">
-                            <a href="#">
-                                <h5>Life Style</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach 
             </div>
         </div>
     </section>
@@ -49,7 +31,12 @@
                 <div class="col-12 col-lg-8">
                     <div class="row">
                         @php 
-                            $allBlog= \DB::table('blogs')->orderBy('id','desc')->get()->toArray();
+                            $allBlog= \DB::table('blogs')->orderBy('id','desc')
+                                ->join('cms_users', 'blogs.blog_author', '=', 'cms_users.id')
+                                ->select('blogs.*', 'cms_users.name')
+                                ->take(8)
+                                ->get()
+                                ->toArray();
                         @endphp
                         <!-- Single Post -->
                         <div class="col-12">
@@ -64,7 +51,7 @@
                                         <div class="post-author-date-area d-flex">
                                             <!-- Post Author -->
                                             <div class="post-author">
-                                                <a href="#">By Marian</a>
+                                                <a href="#">By {{$allBlog[0]->name}}</a>
                                             </div>
                                             <!-- Post Date -->
                                             <div class="post-date">
@@ -114,7 +101,7 @@
                                             <div class="post-author-date-area d-flex">
                                                 <!-- Post Author -->
                                                 <div class="post-author">
-                                                    <a href="#">By Marian</a>
+                                                    <a href="#">By {{$blog->name}}</a>
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
@@ -167,7 +154,7 @@
                                             <div class="post-author-date-area d-flex">
                                                 <!-- Post Author -->
                                                 <div class="post-author">
-                                                    <a href="#">By Marian</a>
+                                                    <a href="#">By {{$blog->name}}</a>
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">

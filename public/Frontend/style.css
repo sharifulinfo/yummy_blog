@@ -1500,3 +1500,14 @@ li {
     border: 0px;
     font-size: 14px;
 }
+
+.paginate{
+    float: right;
+    padding: 30px;
+    margin: 15px;
+}
+.single_blog_area ul li {
+    
+    margin-bottom: 0px; 
+    padding-left: 0px;  
+}

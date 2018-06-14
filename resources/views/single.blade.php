@@ -1,12 +1,12 @@
 @extends('master.master')
 @section('content')
 <!-- ****** Breadcumb Area Start ****** -->
-<div class="breadcumb-area" style="background-image: url(img/bg-img/breadcumb.jpg);">
+<div class="breadcumb-area" style="background-image: url({{ url('') }}/{{$result->blog_img}});">
 	<div class="container h-100">
 		<div class="row h-100 align-items-center">
 			<div class="col-12">
 				<div class="bradcumb-title text-center">
-					<h2>Single Post Blog</h2>
+					<h2>{{$result->blog_title}}</h2>
 				</div>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 						<li class="breadcrumb-item"><a href="#">Archive</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Single Post Blog</li>
+						<li class="breadcrumb-item active" aria-current="page">{{$result->blog_title}}</li>
 					</ol>
 				</nav>
 			</div>

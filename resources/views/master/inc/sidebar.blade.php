@@ -2,7 +2,7 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                     <div class="blog-sidebar mt-5 mt-lg-0">
                         <!-- Single Widget Area -->
-                        <div class="single-widget-area about-me-widget text-center">
+                        <!-- <div class="single-widget-area about-me-widget text-center">
                             <div class="widget-title">
                                 <h6>About Me</h6>
                             </div>
@@ -13,7 +13,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
                         </div>
 
-                        <!-- Single Widget Area -->
+                         
                         <div class="single-widget-area subscribe_widget text-center">
                             <div class="widget-title">
                                 <h6>Subscribe &amp; Follow</h6>
@@ -26,63 +26,30 @@
                                 <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Single Widget Area -->
                         <div class="single-widget-area popular-post-widget">
                             <div class="widget-title text-center">
                                 <h6>Populer Post</h6>
                             </div>
+                            <?php 
+                                 $pposts = DB::table('blogs')->take(5)->orderby('id','desc')->get();
+                                 //dd($fsliders);
+                            ?>
                             <!-- Single Popular Post -->
+                            @foreach($pposts as $ppost)
                             <div class="single-populer-post d-flex">
-                                <img src="{{url('Frontend')}}/img/sidebar-img/1.jpg" alt="">
+                                <img src="{{url('')}}/{{$ppost->blog_img}}" alt="">
                                 <div class="post-content">
-                                    <a href="#">
-                                        <h6>Top Wineries To Visit In England</h6>
+                                    <a href="{{url('/single').'/'.$ppost->id}}">
+                                        <h6>{{$ppost->blog_title}}</h6>
                                     </a>
-                                    <p>Tuesday, October 3, 2017</p>
+                                    <p>{{date('l F, Y',strtotime($ppost->created_at))}}</p>
                                 </div>
                             </div>
-                            <!-- Single Popular Post -->
-                            <div class="single-populer-post d-flex">
-                                <img src="{{url('Frontend')}}/img/sidebar-img/2.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="#">
-                                        <h6>The 8 Best Gastro Pubs In Bath</h6>
-                                    </a>
-                                    <p>Tuesday, October 3, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Popular Post -->
-                            <div class="single-populer-post d-flex">
-                                <img src="{{url('Frontend')}}/img/sidebar-img/3.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="#">
-                                        <h6>Zermatt Unplugged the best festival</h6>
-                                    </a>
-                                    <p>Tuesday, October 3, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Popular Post -->
-                            <div class="single-populer-post d-flex">
-                                <img src="{{url('Frontend')}}/img/sidebar-img/4.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="#">
-                                        <h6>Harrogate's Top 10 Independent Eats</h6>
-                                    </a>
-                                    <p>Tuesday, October 3, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Popular Post -->
-                            <div class="single-populer-post d-flex">
-                                <img src="{{url('Frontend')}}/img/sidebar-img/5.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="#">
-                                        <h6>Eating Out On A Budget In Oxford</h6>
-                                    </a>
-                                    <p>Tuesday, October 3, 2017</p>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
 
                         <!-- Single Widget Area -->

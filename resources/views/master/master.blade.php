@@ -74,7 +74,8 @@
                         </div>
                         <!-- Search Form -->
                         <div class="search-hidden-form">
-                            <form action="#" method="get">
+                            <form action="{{url('/search/')}}" method="post">
+                                {{csrf_field()}}
                                 <input type="search" name="search" id="search-anything" placeholder="Search Anything...">
                                 <input type="submit" value="" class="d-none">
                                 <span class="searchBtn"><i class="fa fa-times" aria-hidden="true"></i></span>

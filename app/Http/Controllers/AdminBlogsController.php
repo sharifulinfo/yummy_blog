@@ -32,8 +32,9 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Blog Title","name"=>"blog_title","width"=>"80"];
 			$this->col[] = ["label"=>"Blog Img","name"=>"blog_img","image"=>true,"width"=>"20"];
-			$this->col[] = ["label"=>"Blog Desc","name"=>"blog_desc","width"=>"400","callback_php"=>'str_limit(strip_tags($row->blog_desc,50))'];
+			$this->col[] = ["label"=>"Blog Desc","name"=>"blog_desc","width"=>"300","callback_php"=>'str_limit(strip_tags($row->blog_desc,50))'];
 			$this->col[] = ["label"=>"Blog Quets","name"=>"blog_quets","width"=>"300"];
+			$this->col[] = ["label"=> "Author","name"=>"blog_author","width"=>"100","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Blog Category","name"=>"blog_category","join"=>"categories,category_name","width"=>"30"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
@@ -43,8 +44,8 @@
 			$this->form[] = ['label'=>'Blog Img','name'=>'blog_img','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Blog Desc','name'=>'blog_desc','type'=>'wysiwyg','validation'=>'required|required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Blog Quets','name'=>'blog_quets','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Blog Category','name'=>'blog_category','type'=>'select','validation'=>'required|min:0','width'=>'col-sm-10','datatable'=>'categories,category_name'];
-			$this->form[] = ['label'=>'Blog Status','name'=>'blog_status','type'=>'hidden','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Blog Category','name'=>'blog_category','type'=>'select','validation'=>'required|min:0','width'=>'col-sm-10','datatable'=>'categories,category_name','datatable_where'=>'status = 1'];
+			$this->form[] = ['label'=>'Blog Author','name'=>'blog_author','type'=>'hidden','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -263,7 +264,7 @@
 	    |
 	    */
 	    public function hook_before_add(&$postdata) {       
-
+	    	$postdata['blog_author'] = CRUDBooster::myId();
 	    }
 
 	    /* 
